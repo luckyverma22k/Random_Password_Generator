@@ -11,39 +11,71 @@
         <h1>
             Generate a <br><span>Random Password</span>
         </h1>
+        <div class="options">
+            <label for="length">Password Length:</label>
+            <input type="number" id="length" min="4" max="20" value="8">
+            <div>
+                <input type="checkbox" id="uppercase" checked>
+                <label for="uppercase">Include Uppercase</label>
+            </div>
+            <div>
+                <input type="checkbox" id="lowercase" checked>
+                <label for="lowercase">Include Lowercase</label>
+            </div>
+            <div>
+                <input type="checkbox" id="numbers" checked>
+                <label for="numbers">Include Numbers</label>
+            </div>
+            <div>
+                <input type="checkbox" id="symbols" checked>
+                <label for="symbols">Include Symbols</label>
+            </div>
+        </div>
         <div class="display">
-            <input type="text" id="password" placeholder="password">
+            <input type="text" id="password" placeholder="password" readonly>
             <img src="copy1.png" onclick="copyPassword()">
         </div>
-        <button onclick="createPassword()"> <img src="generate1.png">Generate Password</button>
+        <button onclick="createPassword()"><img src="generate1.png">Generate Password</button>
     </div>
     <script>
         const passwordBox = document.getElementById("password");
-        const length = 8;
+        const lengthInput = document.getElementById("length");
+        const uppercaseCheckbox = document.getElementById("uppercase");
+        const lowercaseCheckbox = document.getElementById("lowercase");
+        const numbersCheckbox = document.getElementById("numbers");
+        const symbolsCheckbox = document.getElementById("symbols");
+
         const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const lowerCase = "abcdefghijklmnopqrstuvwxyz";
         const number = "0123456789";
         const symbol = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
-         
-        const allChars = upperCase + lowerCase + number + symbol;
-        
-        function createPassword() {
-            let password = "";
-            password += upperCase[Math.floor(Math.random() * upperCase.length)];
-            password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
-            password += number[Math.floor(Math.random() * number.length)];
-            password += symbol[Math.floor(Math.random() * symbol.length)];
 
-            while (length > password.length) {
+        function createPassword() {
+            const length = parseInt(lengthInput.value);
+            let allChars = "";
+            let password = "";
+
+            if (uppercaseCheckbox.checked) allChars += upperCase;
+            if (lowercaseCheckbox.checked) allChars += lowerCase;
+            if (numbersCheckbox.checked) allChars += number;
+            if (symbolsCheckbox.checked) allChars += symbol;
+
+            if (allChars === "") {
+                alert("Please select at least one character type.");
+                return;
+            }
+
+            for (let i = 0; i < length; i++) {
                 password += allChars[Math.floor(Math.random() * allChars.length)];
             }
-            
+
             passwordBox.value = password;
         }
-        
+
         function copyPassword() {
             passwordBox.select();
             document.execCommand("copy");
+            alert("Password copied to clipboard!");
         }
     </script>
 </body>
