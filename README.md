@@ -6,8 +6,9 @@ This Random Password Generator is a simple yet powerful tool to create secure pa
 
 ![image](https://github.com/luckyverma22k/Random_Password_Generator/assets/97178817/b988a8fd-0669-4c1a-a74d-fad24fb50c22)
 
+## Live Demo
 
-
+Check out the live demo of the project [here](https://random-password-generator-sand-nine.vercel.app/).
 
 ## Features
 
@@ -27,9 +28,8 @@ To generate a password, simply:
 2. Click the 'Generate Password' button.
 3. Click the copy icon to copy the password to your clipboard.
 
-
 ## Contact
 
- Lucky - luckyverma22k@gmail.com
+Lucky - luckyverma22k@gmail.com
 
-Project Link: https://github.com/luckyverms22k/random-password-generator
+Project Link: https://github.com/luckyverma22k/random-password-generator
